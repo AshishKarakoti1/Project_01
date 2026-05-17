@@ -1,38 +1,3 @@
-/**
- * @swagger
- * tags:
- *   name: Products
- *   description: Product APIs
- */
-
-/**
- * @swagger
- * /api/products:
- *   get:
- *     summary: Get all products
- *     tags: [Products]
- *
- *     parameters:
- *       - in: query
- *         name: page
- *         schema:
- *           type: integer
- *
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *
- *       - in: query
- *         name: search
- *         schema:
- *           type: string
- *
- *     responses:
- *       200:
- *         description: Products fetched successfully
- */
-
 import express from "express";
 
 import protect from "../middleware/auth.middleware.js";

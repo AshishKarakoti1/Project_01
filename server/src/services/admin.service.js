@@ -2,20 +2,8 @@ import User from "../models/User.js";
 import Product from "../models/Product.js";
 import Order from "../models/Order.js";
 
-import { setCache, getCache } from "../utils/cache.js";
-
 export const getDashboardAnalyticsService =
   async () => {
-    const cacheKey =
-      "admin:dashboard";
-
-    const cachedAnalytics =
-      await getCache(cacheKey);
-
-    if (cachedAnalytics) {
-      return cachedAnalytics;
-    }
-
     const [
       totalUsers,
       totalProducts,
@@ -152,7 +140,7 @@ export const getDashboardAnalyticsService =
       ]),
     ]);
 
-    const result = {
+    return {
       overview: {
         totalUsers,
 
@@ -173,12 +161,4 @@ export const getDashboardAnalyticsService =
 
       monthlySales,
     };
-
-    await setCache(
-      cacheKey,
-      result,
-      300
-    );
-
-    return result;
   };

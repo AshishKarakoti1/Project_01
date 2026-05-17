@@ -3,7 +3,6 @@ import "dotenv/config";
 import app from "./app.js";
 
 import connectDB from "./config/db.js";
-import redisClient from "./config/redis.js";
 
 import logger from "./utils/logger.js";
 
@@ -33,8 +32,6 @@ process.on(
 
 const startServer = async () => {
   try {
-    await redisClient.connect();
-
     await connectDB();
 
     app.listen(PORT, () => {
